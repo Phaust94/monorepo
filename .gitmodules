@@ -1,0 +1,15 @@
+[submodule "bot_manager_manager"]
+	path = bot_manager_manager
+	url = https://github.com/Phaust94/bot_manager_manager.git
+[submodule "liked-copier-bot"]
+	path = liked-copier-bot
+	url = https://github.com/Phaust94/liked-copier-bot.git
+[submodule "qeng_news_bot"]
+	path = qeng_news_bot
+	url = https://github.com/Phaust94/qeng_news_bot.git
+[submodule "location_bot"]
+	path = location_bot
+	url = https://github.com/Phaust94/location_bot.git
+[submodule "tg_userbot"]
+	path = tg_userbot
+	url = https://github.com/Phaust94/tg_userbot.git
