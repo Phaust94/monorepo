@@ -1,3 +1,5 @@
 **/.gitsecret
 .idea
 docker/Dockerfile
+gce_instructions.sh
+build_instructions.sh
