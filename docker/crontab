@@ -1,3 +1,3 @@
-10 * * * * /usr/local/bin/python3.8 /home/ec2-user/bots/encounter_news/update_db.py > /home/ec2-user/log/update_db.log 2>&1
-30 13 * * * /usr/local/bin/python3.8 /home/ec2-user/bots/encounter_news/report.py >> /home/ec2-user/log/report.log 2>&1
+10 * * * * /usr/local/bin/python3.8 /home/ec2-user/bots/qeng_news_bot/update_db.py > /home/ec2-user/log/update_db.log 2>&1
+30 13 * * * /usr/local/bin/python3.8 /home/ec2-user/bots/qeng_news_bot/report.py >> /home/ec2-user/log/report.log 2>&1
 # * * * * * /usr/local/bin/python3.8 -c "print('hello hello')" >> /home/ec2-user/log/du.log 2>&1
