@@ -10,12 +10,6 @@ COPY qeng_news_bot/REQUIRE.txt ./qeng_news_bot/REQUIRE.txt
 COPY tg_userbot/REQUIRE.txt ./tg_userbot/REQUIRE.txt
 RUN python -m pip install -r bot_manager_manager/REQUIRE.txt -r liked-copier-bot/REQUIRE.txt -r location_bot/REQUIRE.txt -r qeng_news_bot/REQUIRE.txt -r tg_userbot/REQUIRE.txt
 
-# Crontab stuff
-COPY docker/crontab /etc/crontab
-RUN crontab -u ec2-user /etc/crontab
-RUN chmod u+s /usr/sbin/cron
-RUN mkdir /home/ec2-user/log/
-
 # Chrome and chromedriver stuff
 RUN curl https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip --output /home/ec2-user/bots/chrome.zip
 RUN cd /home/ec2-user/bots/ && unzip chrome.zip
@@ -28,6 +22,13 @@ RUN apt-get -y update && apt-get install -y libnss3 google-chrome-stable
 RUN rm /opt/google/chrome/chrome && mv /home/ec2-user/bots/chrome-linux64/chrome /home/ec2-user/bots/chrome-linux64/chrome-exec
 COPY docker/chrome /home/ec2-user/bots/chrome-linux64/chrome
 RUN chmod +x /home/ec2-user/bots/chrome-linux64/chrome
+
+# Crontab stuff
+COPY docker/crontab /etc/crontab.sh
+ENV PATH="${PATH}:/home/ec2-user/bots/chromedriver-linux64:/home/ec2-user/bots/chrome-linux64"
+RUN sh /etc/crontab.sh
+RUN chmod u+s /usr/sbin/cron
+RUN mkdir /home/ec2-user/log/
 
 # Moving to custom user
 COPY . /home/ec2-user/bots/
