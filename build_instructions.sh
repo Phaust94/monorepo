@@ -1,3 +1,3 @@
-docker build -t bot_monorepo  -t us-east1-docker.pkg.dev/bots-397520/bots/bot_monorepo:latest -f docker/Dockerfile .
+DOCKER_BUILDKIT=1 docker build -t bot_monorepo -t us-east1-docker.pkg.dev/bots-397520/bots/bot_monorepo:latest -f docker/Dockerfile --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from us-east1-docker.pkg.dev/bots-397520/bots/bot_monorepo:latest .
 docker run -it -v $(pwd)/qeng_news_bot/data:/home/ec2-user/bots/qeng_news_bot/data:rw -t bot_monorepo bash
 docker push us-east1-docker.pkg.dev/bots-397520/bots/bot_monorepo:latest
